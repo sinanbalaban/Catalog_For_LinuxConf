@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="col-md-11 col-md-offset-1 padding-none">
+		<div class="pull-left">
+			<h1> {{item.name}} </h1>
+		</div>	
+		<div class="pull-right">
+			<div class="padding-bottom"></div>
+			<a href="{{url_for('showCatalogItems' )}}">				
+				<span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>Back Category List
+			</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form method = "post">
+				<div class="form-group">
+					<p>{{ item.description }}</p>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

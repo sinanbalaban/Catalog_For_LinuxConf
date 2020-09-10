@@ -1,0 +1,39 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="col-md-11 col-md-offset-1 padding-none">
+		<h1>{{category.cat_name}} ({{quantity}} items)
+		<div class="pull-right">
+			<a href="{{url_for('showCatalogItems' )}}">				
+				<span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>Back Category List
+			</a>
+		</div>
+		</h1>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-5 col-md-offset-1 padding-none">
+		{% for catalog in catalogItems %}
+		<a href = "{{url_for('getCatalogItem', catalog_id = catalog.id)}}">
+			<div class="menu-item">
+				<h3>{{catalog.name}}
+				<figure class="creator">
+					<img src="{{category.user.picture}}" width="80" height="90">
+					<figcaption>{{catalog.user.name}}</figcaption>
+				</figure>
+				</h3>
+				<a href="{{url_for('editCatalogItem',catalog_id = catalog.id)}}" >Edit</a>
+				<a href="{{url_for('deleteCatalogItem', catalog_id = catalog.id)}}" >Delete</a>
+				</br>
+				<a href="{{url_for('getCatalogItem', catalog_id = catalog.id)}}" >Item Details</a>
+			</div>
+		</a>
+		{% endfor %}
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+{% endblock %}

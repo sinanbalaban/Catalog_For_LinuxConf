@@ -1,0 +1,58 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "flash_notification.html" %}
+{% include "header.html" %}
+	<div class="row divider blue">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row padding-top">
+		<div class="col-md-1"></div>
+		<div class="col-md-5 padding-none" style="text-align:center">
+			<h1>Categories</h1>
+			<a href="{{url_for('newCategory')}}">
+				<button class="btn btn-default" id="new-category">
+					<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Add New Category
+				</button>
+			</a>
+		</div>
+		<div class="col-md-5 padding-none" style="text-align:center">
+			<h1>Latest 10 Items</h1>
+			<a href="{{url_for('newCatalogItem')}}">
+				<button class="btn btn-default" id="new-catalog-item">
+					<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Add New Catalog
+				</button>
+			</a>
+		</div>
+	</div>
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-5">
+				{% for category in categories %}
+				<a href = "{{url_for('getCategory', category_id = category.id)}}">
+					<div class="menu-item">
+						<h3>{{category.cat_name}}
+						<figure class="creator">
+							<img src="{{category.user.picture}}" width="80" height="90">
+							<figcaption>{{category.user.name}}</figcaption>
+						</figure>
+						</h3>
+						<a href="{{url_for('editCategory',category_id = category.id)}}" >Edit</a>
+						<a href="{{url_for('deleteCategory', category_id = category.id)}}" >Delete</a>
+						</br>
+						<a href="{{url_for('getCategory', category_id = category.id)}}" >Category Items</a>
+					</div>
+					</a>		
+					{% endfor %}
+				</div>
+				<div class="col-md-5">
+				{% for catalog in latest_catalogs %}
+				<a href = "{{url_for('getCatalogItem', catalog_id = catalog.id)}}">
+					<div class="menu-item">
+						<h3>{{catalog.name}}<p style="font-style:italic">({{catalog.category.cat_name}})</p></h3>
+					</div>
+					</a>		
+					{% endfor %}
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+{% endblock %}

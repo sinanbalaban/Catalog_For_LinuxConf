@@ -1,0 +1,49 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "flash_notification.html" %}
+{% include "header.html" %}
+	<div class="row divider blue">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="col-md-11 col-md-offset-1 padding-none">
+	<h1>{{ category.cat_name }}
+	<figure class="creator">
+		<img src="{{ url_for('static', filename='blank_user.gif') }}">
+		<figcaption>{{creator.name}}</figcaption>
+	</figure>
+	</h1>
+	</div>
+	<div class="row padding-top">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<a href="{{url_for('newCatalogItem', category_id = category.id )}}">
+				<button class="btn btn-default" id="new-catalog-item">
+					<span class="glyphicon glyphicon-glass" aria-hidden="true"></span>Add Catalog Item
+				</button>
+			</a>
+			<a href="{{url_for('showCatalogItems' )}}">
+				<button class="btn btn-default " id="back-catalog-items">
+					<span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>Back Category List
+				</button>
+			</a>
+		</div>
+		<div class="col-md-7"></div>
+	</div>
+	{% if items !=[] %}	
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-9">
+					{% for i in items %}
+					<a href = "{{url_for('getCatalogItem', category_id = category.id, catalog_id = i.id)}}">
+							<div class="menu-item">
+								<h2>{{i.name}}</h2>
+								<p>{{i.description}}</p>
+								<p class="menu-price">{{i.price}}</p>
+								<a href="{{url_for('editCatalogItem', category_id = category.id, catalog_id=i.id ) }}">Edit</a> | 
+								<a href="{{url_for('deleteCatalogItem', category_id = category.id, catalog_id=i.id ) }}">Delete</a>
+							</div>
+					{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="col-md-11 col-md-offset-1 padding-none">
+		<h1>Edit {{category.cat_name}}</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">			
+			<form action="{{ url_for('editCategory',category_id = category.id)}}" method = "post">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type ="text" class="form-control" name="name" value="{{category.cat_name }}">
+					<div class="padding-bottom"></div>
+					<button type="submit" class="btn btn-default" id="submit" type="submit">
+						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save
+					</button>
+					<button class="btn btn-default" id="cancel">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						<a href = "{{ url_for('showCatalogItems') }}">Cancel</a>
+					</button>					
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}
