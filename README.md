@@ -1,4 +1,4 @@
-# Catalog_For_LinuxConf
+# Catalog Item For Udacity 3.Project Linux Configuration
 IP Address : 18.192.57.79
 User grader pass : kgg123*
 
