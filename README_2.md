@@ -168,3 +168,15 @@ Then add the following content:
 10. Reload & Restart Apache Server
 sudo service apache2 reload
 sudo service apache2 restart
+
+
+Resources
+* Stack Overflow
+* mod_wsgi documentation
+* UFW docs
+* How To Setup PostgreSQL
+* Flask mod_wsgi (Apache)
+* Apache Server Configuration Files
+* Protect SSH with Fail2Ban
+* UFW with Fail2ban
+* Ask Ubuntu
