@@ -180,3 +180,5 @@ Resources
 * Protect SSH with Fail2Ban
 * UFW with Fail2ban
 * Ask Ubuntu
+* digitalocean.com/community/tutorials
+* my.esecuredata.com knowlegdebase article 7
